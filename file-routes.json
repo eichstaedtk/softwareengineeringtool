@@ -1,0 +1,27 @@
+[
+  {
+    "route": "",
+    "params": {},
+    "title": "Main Layout",
+    "children": [
+      {
+        "route": "",
+        "menu": {
+          "order": 0,
+          "icon": "line-awesome/svg/globe-solid.svg"
+        },
+        "title": "Hello World",
+        "params": {}
+      },
+      {
+        "route": "projekte",
+        "menu": {
+          "order": 1,
+          "icon": "line-awesome/svg/file.svg"
+        },
+        "title": "Projekte",
+        "params": {}
+      }
+    ]
+  }
+]
