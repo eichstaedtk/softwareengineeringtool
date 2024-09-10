@@ -24,7 +24,7 @@ export default function Projekte() {
   });
 
   return (
-      <div className="flex flex-col h-full items-center justify-center p-l text-center box-border">
+      <div className="flex flex-col h-full items-center p-l box-border">
         <h1 role={"title"}>Neues Projekt anlegen</h1>
 
         <TextField
