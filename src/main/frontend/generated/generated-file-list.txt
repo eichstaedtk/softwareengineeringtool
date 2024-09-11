@@ -1,6 +1,0 @@
-ProjektController.ts
-HelloWorldService.ts
-de/eichstaedt/engineering/domain/Projekt.ts
-connect-client.default.ts
-endpoints.ts
-de/eichstaedt/engineering/domain/ProjektModel.ts

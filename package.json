@@ -35,8 +35,6 @@
     "@babel/preset-react": "7.24.7",
     "@rollup/plugin-replace": "5.0.7",
     "@rollup/pluginutils": "5.1.0",
-    "@testing-library/react": "^16.0.1",
-    "@testing-library/user-event": "^14.5.2",
     "@types/react": "18.3.4",
     "@types/react-dom": "18.3.0",
     "@vaadin/hilla-generator-cli": "24.4.7",
@@ -49,10 +47,8 @@
     "@vaadin/hilla-generator-plugin-subtypes": "24.4.7",
     "@vaadin/hilla-generator-utils": "24.4.7",
     "@vitejs/plugin-react": "4.3.1",
-    "@vitest/browser": "^2.0.5",
     "async": "3.2.6",
     "glob": "10.4.5",
-    "pretty-format": "^29.7.0",
     "rollup-plugin-brotli": "3.1.0",
     "rollup-plugin-visualizer": "5.12.0",
     "strip-css-comments": "5.0.0",
@@ -60,8 +56,6 @@
     "typescript": "5.4.5",
     "vite": "5.4.2",
     "vite-plugin-checker": "0.6.4",
-    "vitest": "^2.0.5",
-    "webdriverio": "^9.0.9",
     "workbox-build": "7.1.1",
     "workbox-core": "7.1.0",
     "workbox-precaching": "7.1.0"
@@ -125,7 +119,7 @@
       "workbox-core": "7.1.0",
       "workbox-precaching": "7.1.0"
     },
-    "hash": "68cfaab787f0cef3ac173a9a3931c57df85042ed2e5f5d46bee5e2c60baf119f"
+    "hash": "112efdc120bf9146f6cb51b293805fe5cb300c2d06f61881d311a438a8db9ce3"
   },
   "overrides": {
     "@vaadin/bundles": "$@vaadin/bundles",
@@ -166,8 +160,5 @@
     "@vaadin/vaadin-themable-mixin": "$@vaadin/vaadin-themable-mixin",
     "@vaadin/vaadin-lumo-styles": "$@vaadin/vaadin-lumo-styles",
     "@vaadin/vaadin-material-styles": "$@vaadin/vaadin-material-styles"
-  },
-  "scripts": {
-    "test": "vitest"
   }
 }

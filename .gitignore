@@ -1,3 +1,7 @@
-/node_modules/
+target/
+
+# The following files are generated/updated by Hilla
+node_modules/
+src/main/frontend/generated/
+vite.generated.ts
 /.idea/
-/target/
