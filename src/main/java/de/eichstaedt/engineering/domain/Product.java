@@ -19,11 +19,11 @@ public class Product {
     this.phase = PHASE.PLANNING;
   }
 
-  private String id;
-  private String name;
-  private LocalDateTime creationDate;
+  private final String id;
+  private final String name;
+  private final LocalDateTime creationDate;
 
-  private SDLC.PHASE phase;
+  private final SDLC.PHASE phase;
 
   public String getId() {
     return id;
