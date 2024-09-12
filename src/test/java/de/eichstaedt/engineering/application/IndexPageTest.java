@@ -13,13 +13,13 @@ import org.junit.jupiter.api.Test;
  * Created by konrad.eichstaedt@gmx.de on 12.09.24.
  */
 @QuarkusTest
-public class IndexPageTest {
+class IndexPageTest {
 
   @TestHTTPResource("index.html")
   URL url;
 
   @Test
-  public void testIndexHtml() throws IOException {
+  void testIndexHtml() throws IOException {
     try (InputStream in = url.openStream()) {
       String contents = new String(in.readAllBytes(), StandardCharsets.UTF_8);
       Assertions.assertTrue(contents.contains("<h1>Welcome to Pure Software-Engineering</h1>"));
