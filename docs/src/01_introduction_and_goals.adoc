@@ -1,0 +1,36 @@
+ifndef::imagesdir[:imagesdir: ../images]
+
+[[section-introduction-and-goals]]
+==	Einführung und Ziele
+
+Mit diesem Projekt möchte ich, als Softwarearchitekt ein Werkzeug erstellen, um viele Aufgaben meiner täglichen Arbeit zu erleichtern bzw. zu automatisieren.
+Darüber hinaus soll mit diesem Werkzeug Wissen gesammelt und analysisiert werden um für zukünftige Projekte bessere Entscheidungen treffen zu können.
+
+ifdef::arc42help[]
+
+endif::arc42help[]
+
+=== Aufgabenstellung
+
+ifdef::arc42help[]
+
+endif::arc42help[]
+
+=== Qualitätsziele
+
+ifdef::arc42help[]
+
+endif::arc42help[]
+
+=== Stakeholder
+
+ifdef::arc42help[]
+
+endif::arc42help[]
+
+[cols="1,1,2" options="header"]
+|===
+|Rolle |Kontakt |Erwartungshaltung
+| _<Rolle-1>_ | _<Kontakt-1>_ | _<Erwartung-1>_
+| _<Rolle-2>_ | _<Kontakt-2>_ | _<Erwartung-2>_
+|===
