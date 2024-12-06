@@ -1,18 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    '../../../templates/IndexController/index.html',
-  ],
-  theme: {
-    container: {
-      center: true,
-      padding: '2rem',
+    content: [
+        '../../../templates/**/*.html',
+    ],
+    theme: {
+        container: {
+            center: true,
+            padding: '2rem',
+        },
+        extend: {},
     },
-    extend: {},
-  },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-  ],
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/typography'),
+    ],
 }
 

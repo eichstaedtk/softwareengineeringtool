@@ -3,6 +3,4 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-design-decisions]]
 == Architekturentscheidungen
 
-ifdef::arc42help[]
-
-endif::arc42help[]
+In diesem Abschnitt werden alle Architekturentscheidungen des Projektes dokumentiert.

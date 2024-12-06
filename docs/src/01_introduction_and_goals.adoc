@@ -10,6 +10,17 @@ Das Werkzeug soll sich dabei an wissenschaftlichen Erkenntnissen aus dem Bereich
 
 === Aufgabenstellung
 
+Entwickle eine Software mit welche Softwarearchitekten Ihre Arbeit effizient erledigen können.
+Zu den Aufgaben gehört:
+
+* Anforderungen analysieren
+* Qualitätsziele abstimmen
+* Qualitätsszenarien formulieren
+* Modelle entwickeln
+* Technologien auswählen
+* Architekturmuster auswählen
+* Architektur dokumentieren
+
 === Qualitätsziele
 
 === Stakeholder

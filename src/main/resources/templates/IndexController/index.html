@@ -7,52 +7,29 @@
     <title>Pure Software-Engineering</title>
     <link rel="stylesheet" href="css/output.css">
 </head>
-<body>
+<body class="flex items-center justify-center h-screen bg-gray-100">
 <main>
-    <div class="container mx-auto px-4 bg-gray-50 py-24 sm:py-32 bg-[url('../image/sdlc.png')]">
-        <div class="column-12md">
-            <h1 class="text-4xl font-bold underline text-center">WELCOME TO PURE SOFTWARE-ENGINEERING</h1>
+    <div class="container mx-auto">
+        <h1 class="text-4xl font-bold underline text-center">WELCOME TO PURE SOFTWARE-ENGINEERING</h1>
+        <div class="items-center space-x-4 mt-8">
+            <div class="border-b border-gray-900/10 pb-12">
+                {#form uri:IndexController.createProject}
+                    <fieldset>
+                        <div class="flex items-center space-x-4">
+                            <legend class="text-base/7 font-semibold text-gray-900">Start a new Product Lifecycle
+                            </legend>
+                            <input class="border p-2 rounded"
+                                   type="text" name="name" id="name" value=""/>
+                        </div>
+                        </p>
+                    </fieldset>
+                    <button type="submit"
+                            class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 mt-8">
+                        Create Product
+                    </button>
+                {/form}
+            </div>
         </div>
-        <div class="border-b border-gray-900/10 pb-12">
-            {#form uri:IndexController.createProject}
-                <fieldset>
-                    <legend class="text-base/7 font-semibold text-gray-900">Start a new Product
-                        Lifecycle
-                    </legend>
-                    <p class="mt-1 text-sm/6 text-gray-600">
-                        <label class="block text-sm/6 font-medium text-gray-900"
-                               for="name">Name</label>
-                        <input class="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6"
-                               type="text" name="name" id="name" value=""/>
-                    </p>
-                </fieldset>
-                <button type="submit"
-                        class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                    Project erstellen
-                </button>
-            {/form}
-        </div>
-        <section>
-            <h2>Projekt</h2>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Erstellt</th>
-                </tr>
-                </thead>
-                <tbody>
-                {#for product in products}
-                    <tr>
-                        <th>{product.id}</th>
-                        <td>{product.name}</td>
-                        <td>{product.creationDate}</td>
-                    </tr>
-                {/for}
-                </tbody>
-            </table>
-        </section>
     </div>
 </main>
 </body>
