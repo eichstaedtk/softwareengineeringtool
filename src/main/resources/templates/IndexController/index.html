@@ -5,24 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pure Software-Engineering</title>
-    <link rel="stylesheet" href="/css/output.css">
+    <link rel="stylesheet" href="css/output.css">
 </head>
 <body>
 <main>
-    <div class="container">
-        <h1 class="text-6xl font-bold underline">Welcome to Pure Software-Engineering</h1>
-        {#form uri:IndexController.createProject}
-            <fieldset>
-                <legend>Start a new Product Lifecycle</legend>
-                <p>
-                    <input type="text" name="name" id="name" value=""/>
-                    <label for="name">Name</label>
-                </p>
-            </fieldset>
-            <button type="submit">
-                Project erstellen
-            </button>
-        {/form}
+    <div class="container mx-auto px-4 bg-gray-50 py-24 sm:py-32 bg-[url('../image/sdlc.png')]">
+        <div class="column-12md mx-auto">
+            <h1 class="text-4xl font-bold underline">Welcome to Pure Software-Engineering</h1>
+        </div>
+        <div class="border-b border-gray-900/10 pb-12">
+            {#form uri:IndexController.createProject}
+                <fieldset>
+                    <legend class="text-base/7 font-semibold text-gray-900">Start a new Product
+                        Lifecycle
+                    </legend>
+                    <p class="mt-1 text-sm/6 text-gray-600">
+                        <label class="block text-sm/6 font-medium text-gray-900"
+                               for="name">Name</label>
+                        <input class="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6"
+                               type="text" name="name" id="name" value=""/>
+                    </p>
+                </fieldset>
+                <button type="submit"
+                        class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                    Project erstellen
+                </button>
+            {/form}
+        </div>
         <section>
             <h2>Projekt</h2>
             <table class="table">
