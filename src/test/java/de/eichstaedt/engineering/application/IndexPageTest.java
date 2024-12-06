@@ -22,7 +22,7 @@ class IndexPageTest {
   void testIndexHtml() throws IOException {
     try (InputStream in = url.openStream()) {
       String contents = new String(in.readAllBytes(), StandardCharsets.UTF_8);
-      Assertions.assertTrue(contents.contains("<h1>Welcome to Pure Software-Engineering</h1>"));
+      Assertions.assertTrue(contents.contains("WELCOME TO PURE SOFTWARE-ENGINEERING"));
     }
   }
 
