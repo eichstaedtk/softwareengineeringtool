@@ -5,41 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pure Software-Engineering</title>
+    <link rel="stylesheet" href="/css/output.css">
 </head>
 <body>
 <main>
-    <h1>Welcome to Pure Software-Engineering</h1>
-    {#form uri:IndexController.createProject}
-        <fieldset>
-            <legend>Start a new Product Lifecycle</legend>
-            <p>
-                <input type="text" name="name" id="name" value=""/>
-                <label for="name">Name</label>
-            </p>
-        </fieldset>
-        <button type="submit" class="btn btn-primary">Project erstellen</button>
-    {/form}
-    <section>
-        <h2>Projekt</h2>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Erstellt</th>
-            </tr>
-            </thead>
-            <tbody>
-            {#for product in products}
+    <div class="container">
+        <h1 class="text-6xl font-bold underline">Welcome to Pure Software-Engineering</h1>
+        {#form uri:IndexController.createProject}
+            <fieldset>
+                <legend>Start a new Product Lifecycle</legend>
+                <p>
+                    <input type="text" name="name" id="name" value=""/>
+                    <label for="name">Name</label>
+                </p>
+            </fieldset>
+            <button type="submit">
+                Project erstellen
+            </button>
+        {/form}
+        <section>
+            <h2>Projekt</h2>
+            <table class="table">
+                <thead>
                 <tr>
-                <th>{product.id}</th>
-                <td>{product.name}</td>
-                <td>{product.creationDate}</td>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Erstellt</th>
                 </tr>
-            {/for}
-            </tbody>
-        </table>
-    </section>
+                </thead>
+                <tbody>
+                {#for product in products}
+                    <tr>
+                        <th>{product.id}</th>
+                        <td>{product.name}</td>
+                        <td>{product.creationDate}</td>
+                    </tr>
+                {/for}
+                </tbody>
+            </table>
+        </section>
+    </div>
 </main>
 </body>
 </html>
