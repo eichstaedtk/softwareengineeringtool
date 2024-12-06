@@ -1,6 +1,7 @@
 package de.eichstaedt.engineering.domain;
 
 import de.eichstaedt.engineering.domain.SDLC.PHASE;
+
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -12,32 +13,37 @@ import java.util.UUID;
  */
 public class Product {
 
-  public Product(String name) {
-    this.id = UUID.nameUUIDFromBytes(name.getBytes(StandardCharsets.UTF_8)).toString();
-    this.name = name;
-    this.creationDate = LocalDateTime.now();
-    this.phase = PHASE.PLANNING;
-  }
+    public Product(String name) {
 
-  private final String id;
-  private final String name;
-  private final LocalDateTime creationDate;
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Product name must not be empty");
+        }
 
-  private final SDLC.PHASE phase;
+        this.id = UUID.nameUUIDFromBytes(name.getBytes(StandardCharsets.UTF_8)).toString();
+        this.name = name;
+        this.creationDate = LocalDateTime.now();
+        this.phase = PHASE.PLANNING;
+    }
 
-  public String getId() {
-    return id;
-  }
+    private final String id;
+    private final String name;
+    private final LocalDateTime creationDate;
 
-  public String getName() {
-    return name;
-  }
+    private final SDLC.PHASE phase;
 
-  public LocalDateTime getCreationDate() {
-    return creationDate;
-  }
+    public String getId() {
+        return id;
+    }
 
-  public PHASE getPhase() {
-    return this.phase;
-  }
+    public String getName() {
+        return name;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public PHASE getPhase() {
+        return this.phase;
+    }
 }
