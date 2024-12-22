@@ -12,20 +12,20 @@
     <div class="container mx-auto">
         <h1 class="text-4xl font-bold underline text-center">PRODUCTS</h1>
         <section>
-            <table class="table">
+            <table class="table-auto border-collapse border border-slate-400 mt-8">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Erstellt</th>
+                    <th class="border border-slate-300 p-4">ID</th>
+                    <th class="border border-slate-300 p-4">Name</th>
+                    <th class="border border-slate-300 p-4">Erstellt</th>
                 </tr>
                 </thead>
                 <tbody>
                 {#for product in products}
                     <tr>
-                        <th>{product.id}</th>
-                        <td>{product.name}</td>
-                        <td>{product.creationDate}</td>
+                        <th class="border border-slate-300 p-4">{product.id}</th>
+                        <td class="border border-slate-300 p-4">{product.name}</td>
+                        <td class="border border-slate-300 p-4">{product.creationDate.format('dd-MM-yyyy HH:mm:ss')}</td>
                     </tr>
                 {/for}
                 </tbody>

@@ -16,17 +16,16 @@
                 {#form uri:IndexController.createProject}
                     <fieldset>
                         <div class="flex items-center space-x-4">
-                            <legend class="text-base/7 font-semibold text-gray-900">Start a new Product Lifecycle
-                            </legend>
+                            <legend class="text-base/7 font-semibold text-gray-900">Product Name:</legend>
                             <input class="border p-2 rounded"
                                    type="text" name="name" id="name" value=""/>
+                            <button type="submit"
+                                    class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                                Create Product
+                            </button>
                         </div>
                         </p>
                     </fieldset>
-                    <button type="submit"
-                            class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 mt-8">
-                        Create Product
-                    </button>
                 {/form}
             </div>
         </div>
