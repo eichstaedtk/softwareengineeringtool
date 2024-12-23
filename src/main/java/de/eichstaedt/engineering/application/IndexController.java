@@ -12,7 +12,8 @@ import jakarta.ws.rs.Path;
 import org.jboss.resteasy.reactive.RestForm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import java.net.URI;
+import java.nio.file.Paths;
 import java.io.Serializable;
 
 /**
@@ -35,14 +36,28 @@ public class IndexController extends Controller implements Serializable {
 
     @Path("/index.html")
     public TemplateInstance index() {
-        logger.info("Calling Index Page", productRepositoryPort.findAll().size());
+        logger.info("Calling Index Page");
         return Templates.index();
     }
 
     @POST
-    public void createProject(@RestForm String name) {
-        logger.info("Creating new Project for {}", name);
-        Product product = new Product(name);
+    public void createProject(@RestForm String name, 
+                            @RestForm String gitUrl,
+                            @RestForm String localDirectory) {
+        logger.info("Creating new Project {} with Git URL {} and local directory {}", 
+                   name, gitUrl, localDirectory);
+                   
+        Product product;
+        if (gitUrl != null && !gitUrl.isEmpty()) {
+            product = new Product(name, URI.create(gitUrl));
+        } else {
+            product = new Product(name);
+        }
+        
+        if (localDirectory != null && !localDirectory.isEmpty()) {
+            product.setLocalDirectory(Paths.get(localDirectory));
+        }
+        
         productRepositoryPort.addProduct(product);
         redirect(ProductsController.class).products();
     }

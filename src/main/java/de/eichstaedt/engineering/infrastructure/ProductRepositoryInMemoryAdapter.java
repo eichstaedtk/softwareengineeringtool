@@ -1,11 +1,13 @@
 package de.eichstaedt.engineering.infrastructure;
 
 import de.eichstaedt.engineering.domain.Product;
+import de.eichstaedt.engineering.domain.ProductId;
 import de.eichstaedt.engineering.domain.ProductRepositoryPort;
 import jakarta.enterprise.context.ApplicationScoped;
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by konrad.eichstaedt@gmx.de on 06.12.24.
@@ -14,7 +16,11 @@ import java.util.List;
 @ApplicationScoped
 public class ProductRepositoryInMemoryAdapter implements ProductRepositoryPort {
 
-    private final HashMap<String, Product> products = new HashMap<>();
+    private final Map<ProductId, Product> products;
+
+    public ProductRepositoryInMemoryAdapter() {
+        this.products = new HashMap<>();
+    }
 
     @Override
     public void addProduct(Product product) {
@@ -23,6 +29,6 @@ public class ProductRepositoryInMemoryAdapter implements ProductRepositoryPort {
 
     @Override
     public List<Product> findAll() {
-        return products.values().stream().toList();
+        return new ArrayList<>(products.values());
     }
 }

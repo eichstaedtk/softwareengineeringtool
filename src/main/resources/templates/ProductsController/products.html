@@ -13,6 +13,12 @@
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Name
                     </th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Git URL
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Local Directory
+                    </th>
                     <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Actions
                     </th>
@@ -23,6 +29,14 @@
                 <tr class="hover:bg-gray-50">
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         {product.name}
+                    </td>
+                    <td class="px-6 py-4 text-sm text-gray-900">
+                        <a href="{product.gitUrl}" class="text-blue-600 hover:text-blue-900 hover:underline" target="_blank">
+                            {product.gitUrl}
+                        </a>
+                    </td>
+                    <td class="px-6 py-4 text-sm text-gray-900">
+                        {product.localDirectory}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <a href="#" class="text-blue-600 hover:text-blue-900">Edit</a>
