@@ -64,6 +64,20 @@ public class Product {
         this.localDirectory = Objects.requireNonNull(localDirectory, "Local directory cannot be null");
     }
 
+    public void clone(GitOperations gitOperations) {
+        if (gitUrl == null) {
+            throw new IllegalStateException("Cannot clone product without Git URL");
+        }
+        if (localDirectory == null) {
+            throw new IllegalStateException("Cannot clone product without local directory");
+        }
+        gitOperations.clone(this);
+    }
+
+    public boolean isCloneable() {
+        return gitUrl != null && localDirectory != null;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

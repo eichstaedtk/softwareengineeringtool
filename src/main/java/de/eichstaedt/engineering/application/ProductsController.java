@@ -2,12 +2,15 @@ package de.eichstaedt.engineering.application;
 
 import de.eichstaedt.engineering.domain.Product;
 import de.eichstaedt.engineering.domain.ProductRepositoryPort;
+import de.eichstaedt.engineering.domain.ProductId;
 import io.quarkiverse.renarde.Controller;
 import io.quarkus.qute.CheckedTemplate;
 import io.quarkus.qute.TemplateInstance;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +27,10 @@ public class ProductsController extends Controller implements Serializable {
     Logger logger = LoggerFactory.getLogger(IndexController.class);
 
     @Inject
-    ProductRepositoryPort productRepositoryPort;
+    ProductRepositoryPort productRepository;
+
+    @Inject
+    CloneProductService cloneProductService;
 
     @CheckedTemplate
     static class Templates {
@@ -33,7 +39,19 @@ public class ProductsController extends Controller implements Serializable {
 
     @Path("/products.html")
     public TemplateInstance products() {
-        logger.info("Calling Projects with number of products {}", productRepositoryPort.findAll());
-        return ProductsController.Templates.products(productRepositoryPort.findAll());
+        logger.info("Calling Projects with number of products {}", productRepository.findAll());
+        return ProductsController.Templates.products(productRepository.findAll());
+    }
+
+    @GET
+    @Path("/products/{id}/clone")
+    public void cloneRepository(@PathParam("id") String id) {
+        try {
+            cloneProductService.cloneProduct(ProductId.of(id));
+        } catch (Exception e) {
+            logger.error("Failed to clone repository", e);
+            // Hier könnte man Fehlermeldungen an das UI weitergeben
+        }
+        redirect(ProductsController.class).products();
     }
 }

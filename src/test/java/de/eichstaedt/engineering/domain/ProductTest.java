@@ -1,66 +1,83 @@
 package de.eichstaedt.engineering.domain;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-import de.eichstaedt.engineering.domain.SDLC.PHASE;
 import java.net.URI;
 import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-/**
- * Created by konrad.eichstaedt@gmx.de on 12.09.24.
- */
-public class ProductTest {
+@ExtendWith(MockitoExtension.class)
+class ProductTest {
 
-  @Test
-  void testStartLifeCylceOfProduct() {
+    @Mock
+    private GitOperations gitOperations;
 
-    Product product = new Product("VD-Zukunft");
+    @Test
+    void shouldBeCloneableWithGitUrlAndLocalDirectory() {
+        // Given
+        Product product = new Product("Test Product");
+        product.setGitUrl(URI.create("https://github.com/test/repo.git"));
+        product.setLocalDirectory(Path.of("/tmp/test"));
 
-    assertNotNull(product);
+        // Then
+        assertTrue(product.isCloneable());
+    }
 
-    assertNotNull(product.getId());
+    @Test
+    void shouldNotBeCloneableWithoutGitUrl() {
+        // Given
+        Product product = new Product("Test Product");
+        product.setLocalDirectory(Path.of("/tmp/test"));
 
-    assertNotNull(product.getName());
+        // Then
+        assertFalse(product.isCloneable());
+    }
 
-    assertNotNull(product.getCreationDate());
+    @Test
+    void shouldNotBeCloneableWithoutLocalDirectory() {
+        // Given
+        Product product = new Product("Test Product");
+        product.setGitUrl(URI.create("https://github.com/test/repo.git"));
 
-    assertEquals(PHASE.PLANNING, product.getPhase());
-  }
+        // Then
+        assertFalse(product.isCloneable());
+    }
 
-  @Test
-  void testCreateProductWithGitUrl() {
-    // Given
-    String productName = "Test-Project";
-    URI gitUrl = URI.create("https://github.com/user/test-project");
+    @Test
+    void shouldCloneSuccessfully() {
+        // Given
+        Product product = new Product("Test Product");
+        product.setGitUrl(URI.create("https://github.com/test/repo.git"));
+        product.setLocalDirectory(Path.of("/tmp/test"));
 
-    // When
-    Product product = new Product(productName, gitUrl);
+        // When
+        product.clone(gitOperations);
 
-    // Then
-    assertNotNull(product);
-    assertEquals(productName, product.getName());
-    assertEquals(gitUrl, product.getGitUrl());
-    assertEquals("https", product.getGitUrl().getScheme());
-    assertEquals("github.com", product.getGitUrl().getHost());
-    assertEquals("/user/test-project", product.getGitUrl().getPath());
-  }
+        // Then
+        verify(gitOperations).clone(product);
+    }
 
-  @Test
-  void testCreateProductWithLocalDirectory() {
-    // Given
-    String productName = "Local-Project";
-    Path localDirectory = Path.of("/projects/local-project");
+    @Test
+    void shouldThrowExceptionWhenCloningWithoutGitUrl() {
+        // Given
+        Product product = new Product("Test Product");
+        product.setLocalDirectory(Path.of("/tmp/test"));
 
-    // When
-    Product product = new Product(productName);
-    product.setLocalDirectory(localDirectory);
+        // Then
+        assertThrows(IllegalStateException.class, () -> product.clone(gitOperations));
+    }
 
-    // Then
-    assertNotNull(product);
-    assertEquals(productName, product.getName());
-    assertEquals(localDirectory, product.getLocalDirectory());
-    assertEquals("/projects/local-project", product.getLocalDirectory().toString());
-  }
+    @Test
+    void shouldThrowExceptionWhenCloningWithoutLocalDirectory() {
+        // Given
+        Product product = new Product("Test Product");
+        product.setGitUrl(URI.create("https://github.com/test/repo.git"));
+
+        // Then
+        assertThrows(IllegalStateException.class, () -> product.clone(gitOperations));
+    }
 }
