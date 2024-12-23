@@ -2,6 +2,7 @@ package de.eichstaedt.engineering.domain;
 
 import de.eichstaedt.engineering.domain.SDLC.PHASE;
 
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -31,6 +32,8 @@ public class Product {
 
     private final SDLC.PHASE phase;
 
+    private URI gitUrl;
+
     public String getId() {
         return id;
     }
@@ -45,5 +48,13 @@ public class Product {
 
     public PHASE getPhase() {
         return this.phase;
+    }
+
+    public URI getGitUrl() {
+        return gitUrl;
+    }
+
+    public void setGitUrl(URI gitUrl) {
+        this.gitUrl = gitUrl;
     }
 }
