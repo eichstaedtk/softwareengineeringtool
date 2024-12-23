@@ -7,29 +7,46 @@
     <title>Pure Software-Engineering</title>
     <link rel="stylesheet" href="css/output.css">
 </head>
-<body class="flex items-center justify-center h-screen bg-gray-100">
-<main>
-    <div class="container mx-auto">
-        <h1 class="text-4xl font-bold underline text-center">WELCOME TO PURE SOFTWARE-ENGINEERING</h1>
-        <div class="items-center space-x-4 mt-8">
-            <div class="border-b border-gray-900/10 pb-12">
+<body class="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-teal-100">
+    <main class="container mx-auto px-4 py-12 relative min-h-screen">
+        <!-- Background Image -->
+        <div class="absolute inset-x-0 bottom-0 flex justify-center items-end opacity-20 h-2/3">
+            <img src="/images/sdlc.png" 
+                 alt="SDLC Background" 
+                 class="object-contain h-full"
+                 aria-hidden="true">
+        </div>
+        
+        <!-- Content -->
+        <div class="max-w-2xl mx-auto bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-8 relative z-10">
+            <h1 class="text-4xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 mb-8">
+                WELCOME TO PURE SOFTWARE-ENGINEERING
+            </h1>
+            
+            <div class="mt-8">
                 {#form uri:IndexController.createProject}
                     <fieldset>
-                        <div class="flex items-center space-x-4">
-                            <legend class="text-base/7 font-semibold text-gray-900">Product Name:</legend>
-                            <input class="border p-2 rounded"
-                                   type="text" name="name" id="name" value=""/>
+                        <div class="flex flex-col sm:flex-row items-stretch gap-4">
+                            <div class="w-full">
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                                    Product Name
+                                </label>
+                                <input class="w-full h-10 border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                       type="text" 
+                                       name="name" 
+                                       id="name" 
+                                       value=""
+                                       placeholder="Enter product name"/>
+                            </div>
                             <button type="submit"
-                                    class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                                    class="w-full sm:w-auto h-10 mt-8 px-6 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors flex items-center justify-center">
                                 Create Product
                             </button>
                         </div>
-                        </p>
                     </fieldset>
                 {/form}
             </div>
         </div>
-    </div>
-</main>
+    </main>
 </body>
 </html>
