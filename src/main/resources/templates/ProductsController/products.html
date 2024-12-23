@@ -1,37 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pure Software-Engineering</title>
-    <link rel="stylesheet" href="css/output.css">
-</head>
-<body class="flex items-center justify-center h-screen bg-gray-100">
-<main>
-    <div class="container mx-auto">
-        <h1 class="text-4xl font-bold underline text-center">PRODUCTS</h1>
-        <section>
-            <table class="table-auto border-collapse border border-slate-400 mt-8">
-                <thead>
+{#include layout/base}
+{#title}Pure Software-Engineering - Products{/title}
+{#content}
+<h1 class="text-4xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 mb-8">
+    Products Overview
+</h1>
+
+<div class="mt-8">
+    <div class="overflow-x-auto rounded-lg shadow">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
                 <tr>
-                    <th class="border border-slate-300 p-4">ID</th>
-                    <th class="border border-slate-300 p-4">Name</th>
-                    <th class="border border-slate-300 p-4">Erstellt</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Name
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Actions
+                    </th>
                 </tr>
-                </thead>
-                <tbody>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
                 {#for product in products}
-                    <tr>
-                        <th class="border border-slate-300 p-4">{product.id}</th>
-                        <td class="border border-slate-300 p-4">{product.name}</td>
-                        <td class="border border-slate-300 p-4">{product.creationDate.format('dd-MM-yyyy HH:mm:ss')}</td>
-                    </tr>
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        {product.name}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <a href="#" class="text-blue-600 hover:text-blue-900">Edit</a>
+                        <span class="mx-2 text-gray-300">|</span>
+                        <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                    </td>
+                </tr>
                 {/for}
-                </tbody>
-            </table>
-        </section>
+            </tbody>
+        </table>
     </div>
-</main>
-</body>
-</html>
+    
+    {#if products.empty}
+    <div class="text-center py-8 text-gray-500">
+        No products available yet.
+    </div>
+    {/if}
+</div>
+{/content}
+{/include} 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{#insert title}Pure Software-Engineering{/insert}</title>
+    <link rel="stylesheet" href="css/output.css">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-teal-100">
+    <main class="container mx-auto px-4 py-12 relative min-h-screen">
+        <!-- Background Image -->
+        <div class="absolute inset-x-0 bottom-0 flex justify-center items-end opacity-20 h-2/3">
+            <img src="/images/sdlc.png" 
+                 alt="SDLC Background" 
+                 class="object-contain h-full"
+                 aria-hidden="true">
+        </div>
+        
+        <!-- Content -->
+        <div class="max-w-2xl mx-auto bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-8 relative z-10">
+            {#insert content}
+            <!-- Seiteninhalt wird hier eingefügt -->
+            {/insert}
+        </div>
+    </main>
+</body>
+</html> 
