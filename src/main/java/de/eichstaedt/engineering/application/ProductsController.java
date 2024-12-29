@@ -40,17 +40,24 @@ public class ProductsController extends Controller implements Serializable {
     @Path("/products.html")
     public TemplateInstance products() {
         logger.info("Calling Projects with number of products {}", productRepository.findAll());
-        return ProductsController.Templates.products(productRepository.findAll());
+        return ProductsController.Templates.products(productRepository.findAll())
+                .data("flash", flash);
     }
 
     @GET
     @Path("/products/{id}/clone")
     public void cloneRepository(@PathParam("id") String id) {
         try {
+            Product product = productRepository.findById(ProductId.of(id))
+                .orElseThrow(() -> new IllegalArgumentException("Product not found"));
+                
             cloneProductService.cloneProduct(ProductId.of(id));
+            flash("message", "Projekt '" + product.getName() + "' wurde erfolgreich geladen");
+            flash("messageType", "success");
         } catch (Exception e) {
             logger.error("Failed to clone repository", e);
-            // Hier könnte man Fehlermeldungen an das UI weitergeben
+            flash("message", "Fehler beim Laden des Projekts: " + e.getMessage());
+            flash("messageType", "error");
         }
         redirect(ProductsController.class).products();
     }

@@ -1,7 +1,6 @@
 package de.eichstaedt.engineering.infrastructure;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 import de.eichstaedt.engineering.domain.Product;
 import java.io.File;
