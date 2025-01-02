@@ -1,6 +1,7 @@
 package de.eichstaedt.engineering.domain;
 
 import de.eichstaedt.engineering.domain.SDLC.PHASE;
+
 import java.net.URI;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
@@ -64,7 +65,7 @@ public class Product {
         this.localDirectory = Objects.requireNonNull(localDirectory, "Local directory cannot be null");
     }
 
-    public void clone(GitOperations gitOperations) {
+    public void clone(GitOperations gitOperations) throws GitException {
         if (gitUrl == null) {
             throw new IllegalStateException("Cannot clone product without Git URL");
         }

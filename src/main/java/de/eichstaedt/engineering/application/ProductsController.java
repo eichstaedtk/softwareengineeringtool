@@ -1,8 +1,8 @@
 package de.eichstaedt.engineering.application;
 
 import de.eichstaedt.engineering.domain.Product;
-import de.eichstaedt.engineering.domain.ProductRepositoryPort;
 import de.eichstaedt.engineering.domain.ProductId;
+import de.eichstaedt.engineering.domain.ProductRepositoryPort;
 import io.quarkiverse.renarde.Controller;
 import io.quarkus.qute.CheckedTemplate;
 import io.quarkus.qute.TemplateInstance;
@@ -49,14 +49,14 @@ public class ProductsController extends Controller implements Serializable {
     public void cloneRepository(@PathParam("id") String id) {
         try {
             Product product = productRepository.findById(ProductId.of(id))
-                .orElseThrow(() -> new IllegalArgumentException("Product not found"));
-                
+                    .orElseThrow(() -> new IllegalArgumentException("Product not found"));
+
             cloneProductService.cloneProduct(ProductId.of(id));
             flash("message", "Projekt '" + product.getName() + "' wurde erfolgreich geladen");
             flash("messageType", "success");
         } catch (Exception e) {
             logger.error("Failed to clone repository", e);
-            flash("message", "Fehler beim Laden des Projekts: " + e.getMessage());
+            flash("message", "Fehler beim herunterladen des Projekts: " + e.getMessage());
             flash("messageType", "error");
         }
         redirect(ProductsController.class).products();

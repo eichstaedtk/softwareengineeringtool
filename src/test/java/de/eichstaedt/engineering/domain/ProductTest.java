@@ -1,14 +1,15 @@
 package de.eichstaedt.engineering.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
-import java.net.URI;
-import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.net.URI;
+import java.nio.file.Path;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 class ProductTest {
@@ -48,7 +49,7 @@ class ProductTest {
     }
 
     @Test
-    void shouldCloneSuccessfully() {
+    void shouldCloneSuccessfully() throws GitException {
         // Given
         Product product = new Product("Test Product");
         product.setGitUrl(URI.create("https://github.com/test/repo.git"));
