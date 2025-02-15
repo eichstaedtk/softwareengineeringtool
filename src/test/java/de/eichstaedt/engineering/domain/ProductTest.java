@@ -81,4 +81,41 @@ class ProductTest {
         // Then
         assertThrows(IllegalStateException.class, () -> product.clone(gitOperations));
     }
+
+    @Test
+    void shouldAddUseCaseToProduct() {
+        // Given
+        Product product = new Product("Test Product");
+        UseCase useCase = new UseCase("Login", "User can log into the system");
+
+        // When
+        product.addUseCase(useCase);
+
+        // Then
+        assertTrue(product.getUseCases().contains(useCase));
+        assertEquals(1, product.getUseCases().size());
+    }
+
+    @Test
+    void shouldNotAllowNullUseCase() {
+        // Given
+        Product product = new Product("Test Product");
+
+        // Then
+        assertThrows(IllegalArgumentException.class, () -> product.addUseCase(null));
+    }
+
+    @Test
+    void shouldProvideUnmodifiableUseCaseList() {
+        // Given
+        Product product = new Product("Test Product");
+        product.addUseCase(new UseCase("Login", "User can log into the system"));
+
+        // When
+        var useCases = product.getUseCases();
+
+        // Then
+        assertThrows(UnsupportedOperationException.class, 
+            () -> useCases.add(new UseCase("Register", "User can register")));
+    }
 }
